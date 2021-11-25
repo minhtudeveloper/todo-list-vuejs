@@ -1,0 +1,18 @@
+[
+  {
+    "value": "Wake up",
+    "status": 2
+  },
+  {
+    "value": "Go to work",
+    "status": 1
+  },
+  {
+    "value": "Back to home",
+    "status": 1
+  },
+  {
+    "value": "go out with girlfriend",
+    "status": 0
+  }
+]
