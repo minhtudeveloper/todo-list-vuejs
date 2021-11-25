@@ -54,9 +54,60 @@ export default defineComponent({
     calculateFilter: Object
   },
   methods: {
-    changeKey(key: string) {
+    changeKey: function (key: string) {
       this.$emit("changeKey", key);
     }
   }
 });
 </script>
+
+<style lang="scss">
+@import "@/styles/variables.scss";
+.filter-todo {
+  background-color: #fff;
+  .progess {
+    flex-flow: 1;
+    height: 10px;
+    width: 100%;
+    background-color: $color-dark;
+    border-radius: 5px;
+    span {
+      display: block;
+      height: 100%;
+      width: 0;
+      border-radius: 5px;
+      background-color: $text-primary1;
+    }
+  }
+  .filter {
+    padding: 15px 0;
+    display: flex;
+    justify-content: space-between;
+    color: $text-primary1;
+    border-bottom: 1px solid $color-dark;
+    .left {
+      padding: 0 15px;
+      p {
+        font-size: 16px;
+      }
+    }
+    .right {
+      padding: 0 10px;
+      button {
+        margin: 0 5px;
+        border: none;
+        background: none;
+        color: $text-primary2;
+        font-size: 16px;
+        &:hover {
+          color: $text-primary1;
+          cursor: pointer;
+        }
+        &.active {
+          color: $text-primary1;
+        }
+      }
+    }
+  }
+}
+</style>

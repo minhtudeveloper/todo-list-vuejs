@@ -73,7 +73,7 @@ export default defineComponent({
     this.todoList = require("@/utils/todoList.json");
   },
   computed: {
-    dataFilter(): objectTodo[] {
+    dataFilter: function (): objectTodo[] {
       let keysFilter: Array<number> = [];
       switch (this.statusFilter) {
         case statusFilter.ALL:
@@ -98,7 +98,7 @@ export default defineComponent({
         );
       });
     },
-    calculateFilter(): calculateFilterObject {
+    calculateFilter: function (): calculateFilterObject {
       const numberCompleted = this.todoList.reduce(
         (counter: number, obj: objectTodo) =>
           obj.status === statusTodo.COMPLETE ? counter + 1 : counter,
@@ -115,14 +115,14 @@ export default defineComponent({
       ).toFixed(2);
       return { numberCompleted, numberProgessCompleted };
     },
-    messageSearch(): string {
+    messageSearch: function (): string {
       return this.messageInput;
     },
-    valueEventUpdate(): eventUpdateObject {
+    valueEventUpdate: function (): eventUpdateObject {
       const result = this.eventUpdate;
       return result;
     },
-    isShowClearCompleted(): boolean {
+    isShowClearCompleted: function (): boolean {
       if (
         [statusFilter.DELETED, statusFilter.ACTIVE].includes(
           this.statusFilter
@@ -166,10 +166,10 @@ export default defineComponent({
       if (value) this.messageInput = `Double click to update value: ${value}`;
       else this.messageInput = "";
     },
-    changeKeyFilter(key: statusFilter) {
+    changeKeyFilter: function (key: statusFilter) {
       this.statusFilter = key;
     },
-    onKeyEnter(obj: eventUpdateObject) {
+    onKeyEnter: function (obj: eventUpdateObject) {
       const { value, isUpdate, valueOld } = obj;
       if (isUpdate) {
         const index = this.todoList.findIndex(
@@ -194,11 +194,11 @@ export default defineComponent({
         }
       }
     },
-    chooseUpdate(obj: eventUpdateObject) {
+    chooseUpdate: function (obj: eventUpdateObject) {
       this.messageInput = `updating for value: ${obj.valueOld} ~~~`;
       this.eventUpdate = obj;
     },
-    clearCompleted() {
+    clearCompleted: function () {
       this.todoList = this.todoList.map((item) => {
         if (item.status == statusTodo.COMPLETE) {
           item.status = statusTodo.DELETE;
@@ -211,5 +211,22 @@ export default defineComponent({
 </script>
 
 <style lang="scss">
-@import "./style.scss";
+@import "@/styles/variables.scss";
+.todo-list {
+  width: 50%;
+  max-width: 600px;
+  min-height: 600px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  .title {
+    text-align: center;
+    padding-bottom: 15px;
+    h1 {
+      color: $text-primary1;
+      font-size: 50px;
+    }
+  }
+}
 </style>

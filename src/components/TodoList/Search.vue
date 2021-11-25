@@ -77,3 +77,35 @@ export default defineComponent({
   }
 });
 </script>
+
+<style lang="scss">
+@import "@/styles/variables.scss";
+.search {
+  padding: 15px 0;
+  text-align: center;
+  input {
+    padding: 8px !important;
+    width: calc(100% - 16px);
+    border: none;
+    color: $text-primary1;
+    font-size: 24px;
+    letter-spacing: 1px;
+    outline: none;
+    box-shadow: -0.5px 1px $color-dark;
+    &:hover {
+      outline: 1px solid $text-primary2;
+    }
+    &::placeholder {
+      color: $text-primary2;
+    }
+  }
+  .message-input {
+    text-align: left;
+    padding-top: 15px;
+    p {
+      min-height: 18px;
+      padding: 3px 0;
+    }
+  }
+}
+</style>
